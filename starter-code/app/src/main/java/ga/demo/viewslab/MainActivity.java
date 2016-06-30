@@ -17,7 +17,7 @@ import static android.view.View.*;
 public class MainActivity extends AppCompatActivity {
 
     // ListView listView;
-    Button mButton;
+    //Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
