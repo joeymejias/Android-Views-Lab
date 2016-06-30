@@ -1,10 +1,13 @@
 package ga.demo.viewslab;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,85 +24,110 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 1", Toast.LENGTH_SHORT).show();
-            }
-        });
+        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.linearLayout);
+        LayoutInflater li = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        int i;
+        for (i = 1; i < 20; i += 2) {
+            View listView = li.inflate(R.layout.new_list, null);
+            TextView textView1 = (TextView) listView.findViewById(R.id.textView_1);
+            TextView textView2 = (TextView) listView.findViewById(R.id.textView_2);
+            Button btn1 = (Button) listView.findViewById(R.id.button_1);
+            String str = "You clicked on the button below views number " + i + " and " + (i + 1);
 
-        final Button button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 2", Toast.LENGTH_SHORT).show();
-            }
-        });
+            btn1.setTag(str);
 
-        final Button button3 = (Button) findViewById(R.id.button3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 3", Toast.LENGTH_SHORT).show();
-            }
-        });
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(), view.getTag().toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
-        final Button button4 = (Button) findViewById(R.id.button4);
-        button4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 4", Toast.LENGTH_SHORT).show();
-            }
-        });
+            textView1.setText("This is TextView number " + i);
+            textView2.setText("This is TextView number " + (i + 1));
 
-        final Button button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 5", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        final Button button6 = (Button) findViewById(R.id.button6);
-        button6.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 6", Toast.LENGTH_SHORT).show();
-            }
-        });
+            mainLayout.addView(listView);
 
-        final Button button7 = (Button) findViewById(R.id.button7);
-        button7.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 7", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        final Button button8 = (Button) findViewById(R.id.button8);
-        button8.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 8", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        final Button button9 = (Button) findViewById(R.id.button9);
-        button9.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 9", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        final Button button10 = (Button) findViewById(R.id.button10);
-        button10.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Toast.makeText(MainActivity.this, "You clicked button 10", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        final Button button = (Button) findViewById(R.id.button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 1", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button2 = (Button) findViewById(R.id.button2);
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 2", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button3 = (Button) findViewById(R.id.button3);
+//        button3.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 3", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button4 = (Button) findViewById(R.id.button4);
+//        button4.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 4", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button5 = (Button) findViewById(R.id.button5);
+//        button5.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 5", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button6 = (Button) findViewById(R.id.button6);
+//        button6.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 6", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button7 = (Button) findViewById(R.id.button7);
+//        button7.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 7", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button8 = (Button) findViewById(R.id.button8);
+//        button8.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 8", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button9 = (Button) findViewById(R.id.button9);
+//        button9.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 9", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        final Button button10 = (Button) findViewById(R.id.button10);
+//        button10.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Perform action on click
+//                Toast.makeText(MainActivity.this, "You clicked button 10", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 //        View.OnClickListener clickListener = new View.OnClickListener() {
 //            public void onClick(View view) {
@@ -141,5 +169,6 @@ public class MainActivity extends AppCompatActivity {
 //        // Assign adapter to ListView
 //        listView.setAdapter(adapter);
 
+        }
     }
 }
